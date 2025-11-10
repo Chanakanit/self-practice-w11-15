@@ -1,0 +1,37 @@
+1. เรียนรู้การทำงานของ fetch() กับ API จริง  
+   - ในฟังก์ชัน getItems(url) ฉันได้เข้าใจว่า fetch(url) จะส่งคำขอไปยัง API และได้ Response กลับมา  
+   - ใช้ await res.json() เพื่อแปลง JSON ที่ได้ให้กลายเป็น JavaScript object  
+   - ทำให้เข้าใจการทำงานแบบ asynchronous และการใช้ try...catch เพื่อจัดการข้อผิดพลาด
+
+2. เรียนรู้การส่งข้อมูลไปยัง API ด้วย POST, PUT, DELETE  
+   - ใน postItem(), putItem(), และ delItem() ฉันได้เรียนรู้ว่าเราสามารถเปลี่ยน HTTP Method เพื่อทำ CRUD ได้  
+   - ใช้ headers: {"Content-Type": "application/json"} เพื่อบอกว่าเราส่งข้อมูล JSON  
+   - ใช้ JSON.stringify(item) เพื่อแปลง object ก่อนส่งให้ API  
+   - ตอน putItem() และ delItem() ฉันเข้าใจว่าการส่ง URL พร้อม id เช่น `${url}/quotes/${id}` คือการบอกให้ API รู้ว่าเราจะแก้ไขหรือลบข้อมูลชิ้นไหน
+
+3. ฝึกการแยกโค้ดออกเป็นโมดูล  
+   - ฉันได้แยกโค้ดออกเป็นสองส่วนหลัก  
+     - myLib/fetchUtils.js สำหรับฟังก์ชัน CRUD ที่ใช้ได้กับทุก resource  
+     - quoteManagement.js สำหรับการจัดการข้อมูล (quotes) โดยเฉพาะ  
+   - การ export และ import ทำให้โค้ดดูเป็นระบบและนำกลับมาใช้ซ้ำได้ง่าย
+
+4. เข้าใจการทำงานของ DOM และการสร้าง element แบบ dynamic  
+   - ใน QuoteEl(quote) ฉันได้ฝึกใช้ document.createElement() เพื่อสร้าง HTML element จากข้อมูลใน JavaScript  
+   - สร้าง <div>, <p>, และ <button> ด้วยโค้ด  
+   - ใช้ setAttribute() และ className เพื่อกำหนดคุณสมบัติของ element  
+   - ทำให้เข้าใจว่าไม่จำเป็นต้องมี HTML ล่วงหน้า — สามารถสร้างทั้งหมดด้วย JS ได้
+
+5. ฝึกการแสดงผลข้อมูลทั้งหมดแบบอัตโนมัติเมื่อหน้าโหลดขึ้นมา  
+   - ใน DOMContentLoaded event ฉันได้ใช้ await renderQuotes() เพื่อให้เว็บโหลดQuoteทั้งหมดทันทีเมื่อเปิดหน้า  
+   - ฟังก์ชัน renderQuotes() จะล้าง <div id="quoteList"> ก่อน แล้วเติมข้อมูลใหม่ทั้งหมดจาก API  
+   - เข้าใจหลักการ “render ใหม่ทุกครั้งเมื่อข้อมูลเปลี่ยน” ซึ่งคล้ายกับแนวคิดใน React
+
+6. ฝึกจัดการ Event ของผู้ใช้  
+   - ใน handleForm(e) ฉันได้เรียนรู้วิธี preventDefault() เพื่อไม่ให้ฟอร์ม reload หน้า  
+   - ตรวจสอบว่า input มี quoteId หรือไม่ เพื่อแยกแยะว่าเป็น “เพิ่มใหม่” หรือ “แก้ไขข้อมูล”  
+   - ใน handleQuoteList(e) ฉันใช้ e.target.className เพื่อตรวจว่าผู้ใช้คลิกปุ่มไหน (“Edit” หรือ “Delete”)  
+
+7. ฝึกจัดการฟอร์ม (Form Handling)  
+   - ใช้ fillForm(quote) เพื่อกรอกข้อมูลลงฟอร์มตอนกด “Edit”  
+   - ใช้ resetForm() เพื่อเคลียร์ข้อมูลในฟอร์มหลังจากเพิ่มหรือแก้ไขเสร็จ  
+   - เข้าใจการผูก input element (quoteId, content, author) เข้ากับ JavaScript เพื่ออัปเดตค่าบนหน้าจอ  
