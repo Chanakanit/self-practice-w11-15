@@ -1,0 +1,32 @@
+1. การใช้งานฟังก์ชันแบบ asynchronous (async/await)
+   - เรียนรู้การใช้ async function เพื่อจัดการงานที่ใช้เวลา เช่น fetch API
+   - เข้าใจการใช้ try...catch เพื่อจัดการข้อผิดพลาด (error handling)
+   - ใช้คำสั่ง await เพื่อรอผลลัพธ์จากการ fetch ข้อมูลก่อนดำเนินการต่อ
+
+2. การดึงข้อมูลจาก API ด้วย Fetch
+   - สร้างฟังก์ชัน getItems(url) เพื่อดึงข้อมูลจาก API
+   - ใช้ fetch() เพื่อส่ง request และรอรับ response จากเซิร์ฟเวอร์
+   - แปลง response เป็น JSON ด้วย res.json()
+   - ใช้ nullish coalescing operator (??) เพื่อให้มีค่าเริ่มต้นเป็น [] หากข้อมูลว่าง
+
+3. การนำฟังก์ชันมาใช้งานแบบ module
+   - ใช้คำสั่ง import และ export เพื่อแยกโค้ดเป็นสัดส่วน เช่น
+     - export { getItems } จากไฟล์ fetchUtils.js
+     - import { getItems } มาใช้ใน management.js
+     - export { loadPlans } เพื่อให้ไฟล์อื่นเรียกใช้ได้
+
+4. การโหลดข้อมูลและแสดงผลในตาราง
+   - เขียนฟังก์ชัน loadPlans() เพื่อเรียก getItems() มาดึงข้อมูล plans จาก API
+   - ใช้ try...catch เพื่อแสดง dialog แจ้งเตือนเมื่อโหลดข้อมูลไม่สำเร็จ
+   - แสดงข้อมูลในตาราง HTML ผ่านการสร้าง element <tr> และ <td> ด้วย JavaScript
+   - ใช้ DOMContentLoaded event เพื่อเริ่ม render ตารางอัตโนมัติเมื่อหน้าเว็บโหลดเสร็จ
+
+5. การจัดการ DOM ด้วย JavaScript
+   - สร้าง element ด้วย document.createElement()
+   - กำหนดค่า textContent ให้กับแต่ละ cell ในตาราง
+   - ใช้ appendChild() เพื่อประกอบโครงสร้างตารางแบบไดนามิก
+   - เรียนรู้การแยกฟังก์ชันย่อย เช่น Eltable(plan) เพื่อสร้างแต่ละแถวในตาราง
+
+สรุป:
+จากโค้ดนี้ คุณได้เรียนรู้กระบวนการพัฒนาเว็บแอปที่ดึงข้อมูลจาก API มาแสดงผลในหน้าเว็บจริง
+โดยใช้หลักการ asynchronous, modular JavaScript, และ DOM manipulation อย่างครบถ้วน
