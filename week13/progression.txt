@@ -1,0 +1,56 @@
+## **File: reserve.js** – Frontend Logic / Page Interaction
+**ทำอะไร:**
+- โหลดข้อมูล study plans จาก backend (`loadPlans()`)
+- สร้าง dropdown ของ study plans (`optionEl()`)
+- จัดการ enable/disable ปุ่ม declare ตามการเลือก plan (`handleFormBtn()`)
+- แสดง declared plan ของนักเรียนบนหน้าเว็บ (`declaredStatus()`, `setDeclared()`)
+- จัดการ form submit เพื่อส่ง declare plan (`handleForm()`)
+- จัดการ dialog แสดงผลลัพธ์/error (`okDialog.addEventListener`)
+
+**Skills ฝึก:**
+- DOM manipulation (`querySelector`, `createElement`, `appendChild`)
+- Event handling (`DOMContentLoaded`, `change`, `submit`, `click`)
+- Async/Await การโหลดข้อมูลจาก API
+- Form handling (`FormData`, input value)
+- Time formatting (`Intl.DateTimeFormat`, `toLocaleString`)
+- UI feedback (เปิด/ปิด dialog)
+
+---
+
+## **File: reserveManagement.js** – Frontend <-> Backend Communication
+**ทำอะไร:**
+- โหลดข้อมูล study plans (`loadPlans()`)
+- ดึง declared plan ของ student ID (`getIdDeclared()`)
+- ส่ง declare plan ไป backend (`postDeclare()`)
+- จัดการ error และ feedback ของ backend
+- ใช้ fetch helper (`getItems`, `addDeclare`) จาก `fetchUtils.js`
+
+**Skills ฝึก:**
+- Modular code / separation of concerns
+- Async/Await กับ fetch
+- Error handling ของ API
+- การใช้ generic helper functions เพื่อลด code ซ้ำ
+- Returning data หรือ fallback value (`[]` หรือ `null`)
+
+---
+
+## **File: fetchUtils.js** – Generic Fetch Helpers
+**ทำอะไร:**
+- `getItems(url)` → GET ข้อมูลจาก API, handle HTTP errors
+- `addDeclare(url, item)` → POST ข้อมูล, handle HTTP errors และ status code ต่าง ๆ (เช่น 409 conflict)
+- รองรับกรณี backend ไม่ส่ง response body
+
+**Skills ฝึก:**
+- Fetch API GET / POST
+- Async/Await + try/catch
+- HTTP error handling (status code, network error)
+- Generic reusable functions
+- JSON parsing และ fallback handling
+
+---
+
+## **สรุปภาพรวมสัปดาห์นี้**
+- สร้าง **Frontend interactive page** เชื่อมกับ backend
+- ฝึก **DOM, Event Handling, Form, Async/Await, Fetch, Module structure**
+- แยกความรับผิดชอบของไฟล์ให้ modular และ reusable
+- จัดการ **user feedback, dialog, date/time formatting, error handling**
