@@ -1,0 +1,40 @@
+1. เปิด Dialog เพื่อขอยืนยันการยกเลิก
+เมื่อผู้ใช้คลิกปุ่มจัดการ (btnForm):
+เรียก handleCancel()
+Dialog จะประกอบด้วย:
+ข้อความยืนยัน พร้อม detail ของแผนที่ประกาศ
+ปุ่ม Cancel Declaration
+ปุ่ม Keep Declaration
+ระบบสร้างปุ่มใหม่ทุกครั้งและลบปุ่มเก่าเพื่อป้องกัน event ซ้ำ
+ผลลัพธ์: ผู้ใช้ได้รับ UI ยืนยันก่อนยกเลิกจริง
+
+2. เมื่อผู้ใช้กดปุ่ม Cancel Declaration
+ปุ่ม ecors-button-cancel ทำงานดังนี้:
+ปิด dialog
+เคลียร์ปุ่มทุกปุ่มใน dialog
+เรียก cancelDeclared()
+ซึ่งจะไปเรียก deleteDeclared(studentId)
+ผลลัพธ์: ระบบเริ่มกระบวนการยิง DELETE ไป backend
+
+3. เรียกใช้ deleteDeclared() (Wrapper Logic)
+ฟังก์ชันนี้อยู่ใน reserveManagement.js
+หน้าที่คือ:
+เรียก delDeclared(url) (ตัวที่ยิง fetch จริง)
+ถ้า error:
+เปิด dialog เดิมขึ้นมา
+ใส่ error message ให้ user
+ผลลัพธ์: จัดการ error UI/UX ให้เรียบร้อยก่อนส่งต่อผลลัพธ์ไปหน้าเว็บ
+
+4. ส่งคำสั่ง DELETE ไป API
+ฟังก์ชันนี้คือ delDeclared(url) อยู่ใน fetchUtils.js
+การทำงาน:
+ส่ง fetch(url, { method: 'DELETE' })
+
+5. Refresh สถานะหลังลบเสร็จ
+เมื่อ DELETE สำเร็จ:
+cancelDeclared() จะเรียก setDeclared(studentId)
+ดึงสถานะใหม่จาก API
+เปลี่ยน UI จาก "Declared" → "Not Declared"
+ซ่อน btnForm
+แสดงปุ่ม Declare กลับมาอีกครั้ง
+ผลลัพธ์: หน้าเว็บอัปเดตตัวเองแบบเซมไม่ต้องรีเฟรชหน้า

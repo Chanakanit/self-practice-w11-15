@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Declaration Page</title>
+    <style>
+        dialog { border: none; border-radius: 10px; padding: 20px; width: 380px; }
+        .ecors-button-dialog, .ecors-button-cancel, .ecors-button-keep {
+            padding: 8px 16px; margin: 8px 4px; cursor: pointer;
+        }
+        .ecors-button-cancel { background: #e44; color: #fff; }
+        .ecors-button-keep { background: #4a4; color: #fff; }
+        .ecors-button-dialog { background: #333; color: #fff; }
+    </style>
+</head>
+<body>
+
+<h3 class="ecors-declared-plan">Not Declared</h3>
+<button class="ecors-button-declare">Declare Plan</button>
+
+<div class="btnForm" style="display:none;">
+    <button class="btn-cancel" onclick="handleCancel(window.currentDeclared)">Cancel</button>
+</div>
+
+<dialog class="ecors-dialog">
+    <p class="ecors-dialog-message"></p>
+    <button class="ecors-button-dialog">OK</button>
+</dialog>
+
+<script type="module" src="./js/reserve.js"></script>
+</body>
+</html>
