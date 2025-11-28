@@ -1,0 +1,17 @@
+1. Working with asynchronous JavaScript:
+   - Using async/await to load data from functions such as loadPlanCourses().
+   - Handling asynchronous operations cleanly and avoiding nested callbacks.
+
+2. DOM manipulation and dynamic UI rendering:
+   - Creating and populating <select> dropdown options based on loaded plan data.
+   - Adding event listeners (click event) to read selected values from the dropdown.
+   - Dynamically updating the UI by clearing and injecting new HTML elements.
+
+3. Data-driven rendering:
+   - Extracting the selected planId and using it to filter data.
+   - Rendering course lists based on the selected study plan.
+   - Creating reusable helper functions such as createCourseItem() and coreCoursesEle().
+
+4. Code organization and readability:
+   - Separating responsibilities into small, clear functions (initPlanDropdown, sentPlanId, coreCoursesEle).
+   - Using template strings and DOM methods for clean and structured output.
